@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <Cocoa/Cocoa.h>
 #import <objc/runtime.h>
-#include <unistd.h>
 
 #define PYTHON_INTERPRETER "/usr/local/bin/python3"
 #define PATHON_SCRIPT      "/Applications/NeteaseMusic.app/Contents/MacOS/script.py"
@@ -67,16 +66,11 @@ static NSMenuItem * artistAndAlbumMenuItem;
         printf("Artist: %s\n", artist);
         printf("Album:  %s\n", album);
         
-        
-        
         int pid = fork();
         if (pid == -1) {
             fprintf(stderr, "failed to fork child process to call Python script\n");
         } else if (pid == 0) {
-            char buf[4096];
-            getcwd(buf, 4095);
-            
-            char * const args[] = {(char * const)PYTHON_INTERPRETER, (char * const)PATHON_SCRIPT, (char * const)buf, (char * const)artist, (char * const)album, 0};
+            char * const args[] = {(char * const)PYTHON_INTERPRETER, (char * const)PATHON_SCRIPT, (char * const)songName, (char * const)artist, (char * const)album, 0};
             execve(PYTHON_INTERPRETER, args, NULL);
             exit(0);
         }
