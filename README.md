@@ -1,5 +1,5 @@
 # netease-now-playing
-Yet another way to get net ease cloud music now playing on macOS
+Yet another way to get netease cloud music now playing on macOS
 
 Inspired by Makito's project, [https://github.com/SumiMakito/NeteaseCloudMusic-Now-Playing](https://github.com/SumiMakito/NeteaseCloudMusic-Now-Playing)
 
